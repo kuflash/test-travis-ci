@@ -6,16 +6,12 @@ env:
     ACTIVATOR_BIN=${TRAVIS_BUILD_DIR}/activator-${ACTIVATOR_VERSION}-minimal/activator \
     HEROKU_APP=deploy-test
 install:
-  - wget ${ACTIVATOR_ZIP_URL}
-  - unzip -q ${ACTIVATOR_ZIP_FILE}
+  - sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 script:
-  - "${ACTIVATOR_BIN} test"
-notifications:
-  email: false
-before_deploy:
-  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - chmod a+x ./herokuEnviroment.sh
   - ./herokuEnviroment.sh
+notifications:
+  email: false
 deploy:
   provider: heroku
   api_key: "ec5cd58f-8c94-4122-8fec-6202ac404af9"
