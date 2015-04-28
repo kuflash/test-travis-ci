@@ -3,12 +3,18 @@ env:
   - ACTIVATOR_VERSION=1.2.12 \
     ACTIVATOR_ZIP_FILE=typesafe-activator-${ACTIVATOR_VERSION}-minimal.zip \
     ACTIVATOR_ZIP_URL=http://downloads.typesafe.com/typesafe-activator/${ACTIVATOR_VERSION}/${ACTIVATOR_ZIP_FILE} \
-    ACTIVATOR_BIN=${TRAVIS_BUILD_DIR}/activator-${ACTIVATOR_VERSION}-minimal/activator
+    ACTIVATOR_BIN=${TRAVIS_BUILD_DIR}/activator-${ACTIVATOR_VERSION}-minimal/activator \
+    HEROKU_APP=deploy-test
 install:
   - wget ${ACTIVATOR_ZIP_URL}
   - unzip -q ${ACTIVATOR_ZIP_FILE}
 script:
   - "${ACTIVATOR_BIN} test"
 notifications:
-  # Email notifications are disabled to not annoy anybody.
   email: false
+before_deploy:
+  - ./herokuEnviroment.sh
+deploy:
+  provider: heroku
+  api_key: "ec5cd58f-8c94-4122-8fec-6202ac404af9"
+  app: ${HEROKU_APP}
