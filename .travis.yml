@@ -4,6 +4,7 @@ env:
     ACTIVATOR_ZIP_FILE=typesafe-activator-${ACTIVATOR_VERSION}-minimal.zip \
     ACTIVATOR_ZIP_URL=http://downloads.typesafe.com/typesafe-activator/${ACTIVATOR_VERSION}/${ACTIVATOR_ZIP_FILE} \
     ACTIVATOR_BIN=${TRAVIS_BUILD_DIR}/activator-${ACTIVATOR_VERSION}-minimal/activator \
+    HEROKU_APP=ga2sa-deploy-test-2
 install:
   - sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - sudo apt-get install expect
