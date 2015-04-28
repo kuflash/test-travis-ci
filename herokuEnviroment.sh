@@ -1,3 +1,3 @@
 #!/bin/sh
  
-heroku create example ${HEROKU_APP}
+heroku apps:create ${HEROKU_APP}
