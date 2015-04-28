@@ -7,8 +7,11 @@ env:
     HEROKU_APP=deploy-test
 install:
   - sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - sudo apt-get install expect
 script:
   - chmod a+x ./herokuEnviroment.sh
+  - chmod a+x ./herokuLogin.exp
+  - ./herokuLogin.exp
   - ./herokuEnviroment.sh
 notifications:
   email: false
