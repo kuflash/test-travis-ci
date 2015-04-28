@@ -13,6 +13,7 @@ script:
 notifications:
   email: false
 before_deploy:
+  - chmod a+x ./herokuEnviroment.sh
   - ./herokuEnviroment.sh
 deploy:
   provider: heroku
