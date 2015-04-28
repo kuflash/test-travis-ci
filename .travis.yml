@@ -13,6 +13,7 @@ script:
 notifications:
   email: false
 before_deploy:
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - chmod a+x ./herokuEnviroment.sh
   - ./herokuEnviroment.sh
 deploy:
